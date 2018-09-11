@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./Plugins/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+
+<style>
+html,body 
+{ 
+    height: 100%; 
+    margin: 0px; 
+    padding: 0px;
+    overflow: hidden;
+}
+#show-more{
+    transition: bottom 1s linear;
+}
+.body-before-show-more{
+    background-image: url('./Images/Background.png'); 
+    background-size:100%; 
+    background-repeat: no-repeat
+}
+.full 
+{ 
+    background: white; 
+    height: 100%; 
+}
+
+</style>
+
+  <body class="body-before-show-more">
+    
+    <div id="body-container" class="full" style="display:none;">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                      </ul>
+                      <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                    </div>
+                </nav>    
+            
+        <div>
+                    <h1>This cool text will blow your mind</h1>
+                    <h2> Hell Yeah! </h2>
+        </div>
+    </div>
+
+    <a href="#" id="show-more" style="position:absolute;bottom:5%;left:50%;">
+        <img src="./Images/see-more.png" class="rounded-circle mx-auto d-block" style="width:75px;height:75px;filter:invert(100%)">
+    </a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./Plugins/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="./Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./Plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+  </body>
+</html>
+
+<script>
+    var stage = 0;
+
+        $(document).ready(function(){
+
+            $("#body-container").height($(document).height());
+
+            $("#show-more").on("click" , function(){
+
+                $('#body-container').fadeIn(1400);
+
+                $(this).css("bottom" , "0%");
+                $(this).fadeOut(1000);
+                stage = 1;
+
+            });
+
+$(window).scroll(function() {
+   alert("scroll");
+});
+
+            $("body").mousewheel(function(event, delta) {
+
+                    var scroll;
+
+if(delta === 1) scroll = "up";
+if(delta === -1) scroll = "down";
+
+event.preventDefault();
+
+if(stage === 0 && scroll === "down")
+{
+    $("#show-more").trigger("click");
+}
+
+if(stage === 1 && scroll === "up"){
+    stage = 0;
+    $('#body-container').fadeToggle(1400);
+
+    $("#show-more").css("bottom" , "5%");
+    $("#show-more").fadeIn(1000);
+};
+            
+
+            });
+        });
+</script>
+
+

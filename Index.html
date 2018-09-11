@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./Plugins/bootstrap/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+</head>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .selector.start.upper {
+      transform: scale(0.6) translate(-60px, 100px);
+      opacity: 0;
+    }
+
+    .selector.start.down {
+      transform: scale(0.6) translate(-60px, -100px);
+      opacity: 0;
+    }
+
+    .selector {
+      transform: scale(0.6) translate(-60px, 0px);
+      opacity: 1;
+      transition: 2s ease-in-out;
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .selector.start.upper {
+      transform: scale(0.5) translate(-220px, 100px);
+      opacity: 0;
+    }
+
+    .selector.start.down {
+      transform: scale(0.5) translate(-220px, -100px);
+      opacity: 0;
+    }
+
+    .selector {
+      transform: scale(0.5) translate(-220px, 0px);
+      opacity: 1;
+      transition: 2s ease-in-out;
+    }
+    .menu-list li {
+      font-size: 24px !important;
+    }
+
+    .menu-list{
+      padding-right: 40px !important;
+    }
+    
+  }
+
+  @media only screen and (max-width: 992px) {
+    .selector.start.upper {
+      transform: scale(0.5) translate(-485px, 100px);
+      opacity: 0;
+    }
+
+    .selector.start.down {
+      transform: scale(0.5) translate(-485px, -100px);
+      opacity: 0;
+    }
+
+    .selector {
+      transform: scale(0.5) translate(-485px, 0px);
+      opacity: 1;
+      transition: 2s ease-in-out;
+    }
+    .menu-list li {
+      font-size: 18px !important;
+    }
+  }
+
+
+  .dev-name.start {
+    opacity: 0;
+  }
+
+  .dev-name {
+    font-family: 'Bree Serif', serif;
+    font-size: 56px;
+    color: #00F6FF;
+    opacity: 1;
+    transition: 2s ease-in-out;
+    margin-left: 40px;
+  }
+
+  .dev-function.start {
+    opacity: 0;
+  }
+
+  .dev-function {
+    font-family: 'Bree Serif', serif;
+    font-size: 30px;
+    color: #00F6FF;
+    opacity: 0.57;
+    transition: 2s ease-in-out;
+    margin-left: 40px;
+  }
+
+  .selector-menu {
+    opacity: 1;
+    width: inherit;
+    height: inherit;
+  }
+
+  .menu-list.start {
+    opacity: 0;
+  }
+
+  .menu-list {
+    padding-right: 65px;
+    opacity: 1;
+    transition: 4s ease;
+  }
+
+  .menu-list li {
+    display: inline-block;
+    font-family: 'Bree Serif';
+    color: #00F6FF;
+    opacity: 0.57;
+    font-size: 36px;
+    cursor: pointer;
+    margin-left: 36px;
+    transition: all 2s linear;
+  }
+
+  .menu-list li:not(.active):hover {
+    opacity: 0.8;
+  }
+
+  .menu-list li.active {
+    opacity: 1;
+  }
+
+  .selector-menu-container {
+    position: absolute;
+  }
+</style>
+
+<div class="selector-menu-container">
+  <img src="./Images/Top-selector.png" class="selector-menu upper" style="transform:translate(0px , 20px)">
+  <br>
+  <br>
+  <img src="./Images/Bottom-selector.png" class="selector-menu down" style="transform:translate(0px , -20px)">
+</div>
+
+<body style="background-color:black;">
+
+  <div class="container">
+    <div class="col-12 text-center" style="margin-top:17%;">
+      <img src="./Images/Top-selector.png" class="selector start upper">
+      <br>
+      <span class="dev-name start">Ricardo Duarte</span>
+      <br>
+      <span class="dev-function start">Full Stack Developer</span>
+      <br>
+      <img src="./Images/Bottom-selector.png" class="selector start down">
+    </div>
+    <br>
+    <br>
+    <div class="col-12 text-center">
+      <ul class="menu-list start">
+        <li>
+          <a>HOME</a>
+        </li>
+        <li>
+          <a>ABOUT ME</a>
+        </li>
+        <li>
+          <a>PROJECTS</a>
+        </li>
+        <li>
+          <a>CONTACTS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="./Plugins/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="./Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="./Plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+</body>
+
+</html>
+
+<script>
+
+  $(document).ready(function () {
+
+    $(".selector-menu-container").hide();
+
+    $(".selector.start")
+      .removeClass("upper")
+      .removeClass("down")
+      .removeClass("start");
+
+    $(".dev-name.start")
+      .removeClass("start");
+
+    $(".dev-function.start")
+      .removeClass("start");
+
+    $(".menu-list.start")
+      .removeClass("start");
+
+    $(".menu-list li a")
+      .on("mouseenter", function () {
+        var thisWidth = $(this).width();
+        var top = $(this).offset().top;
+        var left = $(this).offset().left;
+
+        $(".selector-menu-container").animate({
+          width: thisWidth + 20,
+          top: top - 12,
+          left: left - 10
+        }, 1, function () {
+          $(".selector-menu-container .selector-menu.upper").css("transform", "translate(0px , 10px)");
+          $(".selector-menu-container .selector-menu.down").css("transform", "translate(0px , -10px)");
+        });
+
+        $(".selector-menu-container").fadeIn();
+
+        return false;
+      })
+      .on("mouseleave", function () {
+
+        if ($(".menu-list li a:hover").length > 0) {
+          return false;
+        }
+
+        var thisWidth = $(this).width();
+        var top = $(this).offset().top;
+        var left = $(this).offset().left;
+
+        $(".selector-menu-container").hide();
+        $(".selector-menu-container").animate({
+          width: 0,
+          top: 0,
+          left: 0,
+        }, 1);
+
+
+        $(".selector-menu-container .selector-menu.upper").css("transform", "translate(0px , 20px)");
+        $(".selector-menu-container .selector-menu.down").css("transform", "translate(0px , -20px)");
+
+        return false;
+      })
+      .on("click", function () {
+        $(".selector-menu-container .selector-menu").css("transition", "2s ease-in-out");
+        $(".selector-menu-container .selector-menu.upper").css("transform", "translate(0px , 20px)");
+        $(".selector-menu-container .selector-menu.down").css("transform", "translate(0px , -20px)");
+        return false;
+      });
+  });
+</script>
